@@ -8,6 +8,7 @@ class Input:
         self.mouseX = 0
         self.mouseY = 0
         self.entity = entity
+        self.trig = 0
 
     def checkForInput(self):
         events = pygame.event.get()
@@ -25,8 +26,10 @@ class Input:
         else:
             self.entity.traits["goTrait"].direction = 0
 
-        isThrowing = pressedKeys[K_SPACE]
-        self.entity.traits["throwFire"].throw(isThrowing)
+        if self.trig != pressedKeys[K_SPACE] and self.trig == 0:
+            isThrowing = pressedKeys[K_SPACE]
+            self.entity.traits["throwFire"].throw(isThrowing)
+        self.trig = pressedKeys[K_SPACE]
 
         isJumping = pressedKeys[K_UP] or pressedKeys[K_k]
         self.entity.traits["jumpTrait"].jump(isJumping)

@@ -1,9 +1,7 @@
 class throwFire:
-    def __init__(self, entity, x, y):
+    def __init__(self, entity):
         self.entity = entity
-        self.x = x
-        self.y = y
-
+        
     def throw(self, throwing):
         if throwing:
-            self.entity.levelObj.addFireFlower(self.x, self.y)
+            self.entity.levelObj.addFireBall(self.entity.getPosY() // 32, self.entity.getPosIndexAsFloat().x)

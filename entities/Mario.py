@@ -59,7 +59,7 @@ class Mario(EntityBase):
             "jumpTrait": JumpTrait(self),
             "goTrait": GoTrait(smallAnimation, screen, self.camera, self),
             "bounceTrait": bounceTrait(self),
-            "throwFire": throwFire(self, self.camera),
+            "throwFire": throwFire(self),
         }
 
         self.levelObj = level
@@ -176,7 +176,8 @@ class Mario(EntityBase):
             ent.active = False
             ent.bouncing = False
         self.dashboard.points += 100
-
+        if ent.__class__.__name__ == "FireFlower":
+            self.dashboard.points += 100
     def gameOver(self):
         srf = pygame.Surface((640, 480))
         srf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
@@ -202,6 +203,12 @@ class Mario(EntityBase):
 
     def getPos(self):
         return self.camera.x + self.rect.x, self.rect.y
+    
+    def getPosX(self):
+        return self.camera.x + self.rect.x
+    
+    def getPosY(self):
+        return self.rect.y
 
     def setPos(self, x, y):
         self.rect.x = x

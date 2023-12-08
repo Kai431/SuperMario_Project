@@ -11,7 +11,7 @@ from entities.Koopa import Koopa
 from entities.CoinBox import CoinBox
 from entities.RandomBox import RandomBox
 from entities.Fire import FireFlower
-
+from entities.FireBall import FireBall
 
 class Level:
     def __init__(self, screen, sound, dashboard):
@@ -220,3 +220,11 @@ class Level:
                 self.screen, self.sprites.spriteCollection, x, y, self, self.sound
             )
         )
+        
+    def addFireBall(self, x, y):
+        self.entityList.append(
+            FireBall(
+                self.screen, self.sprites.spriteCollection, x, y, self, self.sound
+            )
+        )
+
