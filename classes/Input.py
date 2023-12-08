@@ -27,8 +27,10 @@ class Input:
             self.entity.traits["goTrait"].direction = 0
 
         if self.trig != pressedKeys[K_SPACE] and self.trig == 0:
-            isThrowing = pressedKeys[K_SPACE]
+            isThrowing = 1
             self.entity.traits["throwFire"].throw(isThrowing)
+        elif self.trig != pressedKeys[K_SPACE] and self.trig == 1:
+            self.entity.inThrow = False  # TODO: Fix Throw Animation
         self.trig = pressedKeys[K_SPACE]
 
         isJumping = pressedKeys[K_UP] or pressedKeys[K_k]

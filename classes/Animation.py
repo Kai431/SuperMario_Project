@@ -1,5 +1,12 @@
 class Animation:
-    def __init__(self, images, idleSprite=None, airSprite=None, deltaTime=7):
+    def __init__(
+        self,
+        images,
+        idleSprite=None,
+        airSprite=None,
+        throwSprite=None,
+        deltaTime=7,
+    ):
         self.images = images
         self.timer = 0
         self.index = 0
@@ -7,6 +14,7 @@ class Animation:
         self.idleSprite = idleSprite
         self.airSprite = airSprite
         self.deltaTime = deltaTime
+        self.throwSprite = throwSprite
 
     def update(self):
         self.timer += 1
@@ -22,3 +30,6 @@ class Animation:
 
     def inAir(self):
         self.image = self.airSprite
+
+    def throw(self):
+        self.image = self.throwSprite

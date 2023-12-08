@@ -17,7 +17,7 @@ class EntityBase(object):
         self.type = ""
         self.onGround = False
         self.obeyGravity = True
-        
+
     def applyGravity(self):
         if self.obeyGravity:
             self.vel.y += self.gravity
@@ -34,8 +34,7 @@ class EntityBase(object):
 
     def getPosIndexAsFloat(self):
         return Vec2D(self.rect.x / 32.0, self.rect.y / 32.0)
-    
+
     def scaleRect(self, scale):
         self.rect.x * scale
         self.rect.y * scale
-        

@@ -1,7 +1,23 @@
 class throwFire:
     def __init__(self, entity):
         self.entity = entity
-        
+
     def throw(self, throwing):
-        if throwing:
-            self.entity.levelObj.addFireBall(self.entity.getPosY() // 32, self.entity.getPosIndexAsFloat().x)
+        if throwing and self.entity.powerUpState == 2:
+            heading = self.entity.traits["goTrait"].heading
+            self.entity.inThrow = True
+            if heading == 1:
+                addX = 32
+            else:
+                addX = 0
+
+            self.entity.levelObj.addFireBall(
+                (self.entity.getPosY() + 64) // 32,
+                self.entity.getPosIndexAsFloat().x + addX // 32,
+                heading,
+            )
+        if self.entity.inThrow:
+            self.entity.inTrow = False
+
+    def reset(self):
+        self.entity.inThrow = False

@@ -42,6 +42,7 @@ fireAnimation = Animation(
     ],
     spriteCollection["mario_fire_idle"].image,
     spriteCollection["mario_fire_jump"].image,
+    spriteCollection["mario_big_jump"].image,
 )
 
 
@@ -53,6 +54,7 @@ class Mario(EntityBase):
         self.input = Input(self)
         self.inAir = False
         self.inJump = False
+        self.inThrow = False
         self.powerUpState = 0
         self.invincibilityFrames = 0
         self.traits = {
@@ -178,6 +180,7 @@ class Mario(EntityBase):
         self.dashboard.points += 100
         if ent.__class__.__name__ == "FireFlower":
             self.dashboard.points += 100
+
     def gameOver(self):
         srf = pygame.Surface((640, 480))
         srf.set_colorkey((255, 255, 255), pygame.RLEACCEL)
@@ -203,10 +206,10 @@ class Mario(EntityBase):
 
     def getPos(self):
         return self.camera.x + self.rect.x, self.rect.y
-    
+
     def getPosX(self):
         return self.camera.x + self.rect.x
-    
+
     def getPosY(self):
         return self.rect.y
 

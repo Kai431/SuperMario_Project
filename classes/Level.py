@@ -13,6 +13,7 @@ from entities.RandomBox import RandomBox
 from entities.Fire import FireFlower
 from entities.FireBall import FireBall
 
+
 class Level:
     def __init__(self, screen, sound, dashboard):
         self.sprites = Sprites()
@@ -220,11 +221,10 @@ class Level:
                 self.screen, self.sprites.spriteCollection, x, y, self, self.sound
             )
         )
-        
-    def addFireBall(self, x, y):
+
+    def addFireBall(self, x, y, dir):
         self.entityList.append(
             FireBall(
-                self.screen, self.sprites.spriteCollection, x, y, self, self.sound
+                self.screen, self.sprites.spriteCollection, x, y, self, self.sound, dir
             )
         )
-

@@ -15,7 +15,7 @@ throwAnimation = Animation(
         spriteCollection["fireBall_4"].image,
     ],
 )
-#TODO: Add Animaiton exploding
+# TODO: Add Animaiton exploding
 explodeAnimation = Animation(
     [
         spriteCollection["mario_big_run1"].image,
@@ -25,13 +25,16 @@ explodeAnimation = Animation(
 )
 
 
-
 class FireBall(EntityBase):
-    def __init__(self, screen, spriteColl, x, y, level, sound):
-        super(FireBall, self).__init__(y, x - 1, 1.25)
+    def __init__(self, screen, spriteColl, x, y, level, sound, dir):
+        super(FireBall, self).__init__(y, x - 1, 0.5)  # last num is gravity
+        self.rect.width = 16
+        self.rect.height = 16
         self.spriteCollection = spriteColl
         self.screen = screen
         self.leftrightTrait = LeftRightWalkTrait(self, level)
+        self.leftrightTrait.direction = dir
+        self.leftrightTrait.speed = 4
         self.type = "Projectile"
         self.dashboard = level.dashboard
         self.collision = Collider(self, level)
@@ -50,7 +53,6 @@ class FireBall(EntityBase):
             self.onDead(camera)
 
     def drawFireBall(self, camera):
-        self.entity.scaleRect(0.5)
         self.screen.blit(self.animation.image, (self.rect.x + camera.x, self.rect.y))
         self.animation.update()
 
