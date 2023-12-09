@@ -17,14 +17,6 @@ throwAnimation = Animation(
     ],
 )
 # TODO: Add Animaiton exploding
-explodeAnimation = Animation(
-    [
-        spriteCollection["mario_big_run1"].image,
-        spriteCollection["mario_big_run2"].image,
-        spriteCollection["mario_big_run3"].image,
-    ],
-)
-
 
 class FireBall(EntityBase):
     def __init__(self, screen, spriteColl, x, y, level, sound, dir):
@@ -90,11 +82,11 @@ class FireBall(EntityBase):
             collisionState = self.EntityCollider.check(ent)
             if collisionState.isColliding:
                 if ent.__class__.__name__ == "Goomba":
-                    ent.alive = 0
-                    self.alive = 0
+                    ent.alive = False
+                    self.alive = False
                 if ent.__class__.__name__ == "Koopa":
                     if not ent.active:
-                        ent.alive = False
+                        ent.alive = None
                     else:
                         ent.timer = 0
                         ent.leftrightTrait.speed = 1
