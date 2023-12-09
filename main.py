@@ -8,6 +8,11 @@ from entities.Mario import Mario
 
 windowSize = 640, 480
 
+#TODO: Add Finish
+#TODO: Add Koopa Shoot on top Bounce
+#TODO: Add LevelEditor
+#TODO: Add ducking
+#TODO: Add Bullet Bill
 
 def main():
     pygame.mixer.pre_init(44100, -16, 2, 4096)
