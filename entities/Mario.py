@@ -42,7 +42,7 @@ fireAnimation = Animation(
     ],
     spriteCollection["mario_fire_idle"].image,
     spriteCollection["mario_fire_jump"].image,
-    spriteCollection["mario_big_jump"].image,
+
 )
 
 

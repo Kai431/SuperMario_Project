@@ -1,6 +1,6 @@
 class bounceTrait:
-    def __init__(self, entity):
-        self.vel = 5
+    def __init__(self, entity, velocity = 5):
+        self.vel = velocity
         self.jump = False
         self.entity = entity
 

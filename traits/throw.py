@@ -16,8 +16,3 @@ class throwFire:
                 self.entity.getPosIndexAsFloat().x + addX // 32,
                 heading,
             )
-        if self.entity.inThrow:
-            self.entity.inTrow = False
-
-    def reset(self):
-        self.entity.inThrow = False
