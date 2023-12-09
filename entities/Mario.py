@@ -177,9 +177,10 @@ class Mario(EntityBase):
             ent.alive = True
             ent.active = False
             ent.bouncing = False
-        self.dashboard.points += 100
-        if ent.__class__.__name__ == "FireFlower":
+        if ent.__class__.__name__ == "RedMushroom":
             self.dashboard.points += 100
+        elif ent.__class__.__name__ == "FireFlower":
+            self.dashboard.points += 200
 
     def gameOver(self):
         srf = pygame.Surface((640, 480))

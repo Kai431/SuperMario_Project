@@ -41,6 +41,7 @@ class Goomba(EntityBase):
 
     def onDead(self, camera):
         if self.timer == 0:
+            self.dashboard.points += 100
             self.setPointsTextStartPosition(self.rect.x + 3, self.rect.y)
         if self.timer < self.timeAfterDeath:
             self.movePointsTextUpAndDraw(camera)
