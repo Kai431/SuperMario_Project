@@ -53,31 +53,13 @@ class FireBall(EntityBase):
                 self.lives -= 1
             self.direction = self.leftrightTrait.direction
             self.bounceTrait.update()
-            self.checkEntityCollision()
-        else:
-            self.onDead(camera)
+            self.checkEntityCollision(camera)      
 
     def drawFireBall(self, camera):
         self.screen.blit(self.animation.image, (self.rect.x + camera.x, self.rect.y))
         self.animation.update()
 
-    def onDead(self, camera):
-        if self.timer == 0:
-            self.setPointsTextStartPosition(self.rect.x + 3, self.rect.y)
-        if self.timer < self.timeAfterDeath:
-            self.movePointsTextUpAndDraw(camera)
-        else:
-            self.alive = None
-        self.timer += 0.1
-
-    def setPointsTextStartPosition(self, x, y):
-        self.textPos = Vec2D(x, y)
-
-    def movePointsTextUpAndDraw(self, camera):
-        self.textPos.y += -0.5
-        self.dashboard.drawText("", self.textPos.x + camera.x, self.textPos.y, 8)
-
-    def checkEntityCollision(self):
+    def checkEntityCollision(self, camera):
         for ent in self.levelObj.entityList:
             collisionState = self.EntityCollider.check(ent)
             if collisionState.isColliding:
@@ -86,11 +68,11 @@ class FireBall(EntityBase):
                     self.alive = False
                 if ent.__class__.__name__ == "Koopa":
                     if not ent.active:
-                        ent.alive = None
+                        ent.killed = True
                     else:
                         ent.timer = 0
                         ent.leftrightTrait.speed = 1
                         ent.alive = True
                         ent.active = False
-                    self.alive = 0
+                    self.alive = None
         pass

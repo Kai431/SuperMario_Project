@@ -20,7 +20,7 @@ class Koopa(EntityBase):
         )
         self.screen = screen
         self.leftrightTrait = LeftRightWalkTrait(self, level)
-        self.timer = 0
+        self.timerShell = 0
         self.timeAfterDeath = 35
         self.type = "Mob"
         self.dashboard = level.dashboard
@@ -28,16 +28,24 @@ class Koopa(EntityBase):
         self.EntityCollider = EntityCollider(self)
         self.levelObj = level
         self.sound = sound
+        self.textPos = Vec2D(0, 0)
+        self.killed = False
 
     def update(self, camera):
-        if self.alive and self.active:
-            self.updateAlive(camera)
-            self.checkEntityCollision()
-        elif self.alive and not self.active and not self.bouncing:
-            self.sleepingInShell(camera)
-            self.checkEntityCollision()
-        elif self.bouncing:
-            self.shellBouncing(camera)
+        if self.killed:
+            self.alive = False
+            self.active = False
+            self.timeAfterDeath = 5
+            self.onDead(camera)
+        else:
+            if self.alive and self.active:
+                self.updateAlive(camera)
+                self.checkEntityCollision()
+            elif self.alive and not self.active and not self.bouncing:
+                self.sleepingInShell(camera)
+                self.checkEntityCollision()
+            elif self.bouncing:
+                self.shellBouncing(camera)
 
     def drawKoopa(self, camera):
         if self.leftrightTrait.direction == -1:
@@ -58,7 +66,7 @@ class Koopa(EntityBase):
         self.leftrightTrait.update()
 
     def sleepingInShell(self, camera):
-        if self.timer < self.timeAfterDeath:
+        if self.timerShell < self.timeAfterDeath:
             self.screen.blit(
                 self.spriteCollection.get("koopa-hiding").image,
                 (self.rect.x + camera.x, self.rect.y - 32),
@@ -67,8 +75,8 @@ class Koopa(EntityBase):
             self.alive = True
             self.active = True
             self.bouncing = False
-            self.timer = 0
-        self.timer += 0.1
+            self.timerShell = 0
+        self.timerShell += 0.1
 
     def updateAlive(self, camera):
         self.applyGravity()
@@ -86,7 +94,23 @@ class Koopa(EntityBase):
 
     def _onCollisionWithMob(self, mob, collisionState):
         if collisionState.isColliding and mob.bouncing:
-            self.alive = None
-            mob.alive = None
-            print(mob.__class__.__name__)
+            self.killed = True
+            mob.killed = True
             self.sound.play_sfx(self.sound.brick_bump)
+            
+    def onDead(self, camera):
+        if self.timer == 0:
+            self.dashboard.points += 400
+            self.setPointsTextStartPosition(self.rect.x + 3, self.rect.y)
+        if self.timer < self.timeAfterDeath:
+            self.movePointsTextUpAndDraw(camera)
+        else:
+            self.alive = None
+        self.timer += 0.1
+
+    def setPointsTextStartPosition(self, x, y):
+        self.textPos = Vec2D(x, y)
+
+    def movePointsTextUpAndDraw(self, camera):
+        self.textPos.y += -0.5
+        self.dashboard.drawText("400", self.textPos.x + camera.x, self.textPos.y, 8)
