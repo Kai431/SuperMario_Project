@@ -366,6 +366,12 @@
                     2,
                     "RedMushroom"
                 ]
+            ],
+            "BillShooter": [
+                [
+                    4,
+                    4
+                ]
             ]
         }
     }

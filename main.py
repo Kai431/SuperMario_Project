@@ -12,7 +12,7 @@ windowSize = 640, 480
 #TODO: Add Koopa Shoot on top Bounce
 #TODO: Add LevelEditor
 #TODO: Add ducking
-#TODO: Add Bullet Bill
+#TODO: Add Bullet Bill, Add Shooting Sound
 
 def main():
     pygame.mixer.pre_init(44100, -16, 2, 4096)
