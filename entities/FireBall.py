@@ -66,10 +66,8 @@ class FireBall(EntityBase):
         for ent in self.levelObj.entityList:
             collisionState = self.EntityCollider.check(ent)
             if collisionState.isColliding:
-                if ent.__class__.__name__ == "Goomba":
-                    ent.alive = False
-                    self.alive = False
-                if ent.__class__.__name__ == "Koopa":
+                clName = ent.__class__.__name__
+                if clName == "Koopa":
                     if not ent.active:
                         ent.killed = True
                     else:
@@ -78,4 +76,7 @@ class FireBall(EntityBase):
                         ent.alive = True
                         ent.active = False
                     self.alive = None
+                elif clName == "Goomba" or clName == "BulletBill":
+                    ent.alive = False
+                    self.alive = False
         pass

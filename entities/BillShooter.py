@@ -22,6 +22,7 @@ class BillShooter(EntityBase):
         self.alive = True
 
     def update(self, cam):
+        self.changeDir(cam)
         self.time += 1
         if self.time == self.maxTime:
             self.time = 0
@@ -29,3 +30,9 @@ class BillShooter(EntityBase):
                 self.level.addBulletBill(self.y + 1, self.x + 1, self.direction)
             else:
                 self.level.addBulletBill(self.y + 1, self.x - 1, self.direction)
+
+    def changeDir(self, cam):
+        if cam.entity.getPosX() // 33 - cam.x // 32 <= self.x - 1:
+            self.direction = -1
+        else:
+            self.direction = 1

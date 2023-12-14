@@ -29,7 +29,6 @@ class BulletBill(EntityBase):
             ]
         )
         self.lives = 1
-        self.direction = dir
 
     def update(self, camera):
         if self.alive:
@@ -43,7 +42,7 @@ class BulletBill(EntityBase):
             self.alive = None
 
     def drawBulletBill(self, camera):
-        if self.direction == -1:
+        if self.leftrightTrait.direction == -1:
             self.screen.blit(
                 self.animation.image, (self.rect.x + camera.x, self.rect.y)
             )
