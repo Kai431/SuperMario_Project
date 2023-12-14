@@ -12,6 +12,8 @@ from entities.CoinBox import CoinBox
 from entities.RandomBox import RandomBox
 from entities.Fire import FireFlower
 from entities.FireBall import FireBall
+from entities.BillShooter import BillShooter
+from entities.BulletBill import BulletBill
 
 
 class Level:
@@ -42,6 +44,10 @@ class Level:
             [
                 self.addRandomBox(x, y, item)
                 for x, y, item in data["level"]["entities"]["RandomBox"]
+            ]
+            [
+                self.addBillShooter(x, y)
+                for x, y in data["level"]["entities"]["BillShooter"]
             ]
         except:
             # if no entities in Level
@@ -226,5 +232,39 @@ class Level:
         self.entityList.append(
             FireBall(
                 self.screen, self.sprites.spriteCollection, x, y, self, self.sound, dir
+            )
+        )
+
+    def addBillShooter(self, x, y):
+        self.level[y][x] = Tile(
+            self.sprites.spriteCollection.get("BillShooter"),
+            pygame.Rect(x * 32, y * 32, 32, 32),
+        )
+        self.level[y + 1][x] = Tile(
+            self.sprites.spriteCollection.get("BillShooterBot"),
+            pygame.Rect(x * 32, (y + 1) * 32, 32, 32),
+        )
+        self.entityList.append(
+            BillShooter(
+                self.screen,
+                self.sprites.spriteCollection,
+                x,
+                y,
+                self.sound,
+                self.dashboard,
+                self,
+            )
+        )
+
+    def addBulletBill(self, x, y, dir):
+        self.entityList.append(
+            BulletBill(
+                self.screen,
+                self.sprites.spriteCollection,
+                x,
+                y,
+                self,
+                self.sound,
+                dir,
             )
         )

@@ -18,6 +18,7 @@ throwAnimation = Animation(
 )
 # TODO: Add Animaiton exploding
 
+
 class FireBall(EntityBase):
     def __init__(self, screen, spriteColl, x, y, level, sound, dir):
         super(FireBall, self).__init__(y, x - 1, 0.5)  # last num is gravity
@@ -47,13 +48,15 @@ class FireBall(EntityBase):
             if self.onGround:
                 self.bounceTrait.jump = 1
                 self.lives -= 1
-            if(self.lives <= 0):
+            if self.lives <= 0:
                 self.alive = 0
             if self.direction != self.leftrightTrait.direction:
                 self.lives -= 1
             self.direction = self.leftrightTrait.direction
             self.bounceTrait.update()
-            self.checkEntityCollision(camera)      
+            self.checkEntityCollision(camera)
+        else:
+            self.alive = None
 
     def drawFireBall(self, camera):
         self.screen.blit(self.animation.image, (self.rect.x + camera.x, self.rect.y))

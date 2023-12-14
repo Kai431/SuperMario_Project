@@ -1,0 +1,18 @@
+{
+    "spriteSheetURL": "./img/characters.gif",
+    "type": "character",
+    "size": [
+        16,
+        16
+    ],
+    "sprites": [
+        {
+            "name": "bill",
+            "x": 228,
+            "y": 333,
+            "scalefactor": 2,
+            "colorKey": -1,
+            "collision": false
+        }
+    ]
+}

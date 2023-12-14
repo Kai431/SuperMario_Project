@@ -18,6 +18,7 @@ class Sprites:
                 "./sprites/RedMushroom.json",
                 "./sprites/FireFlower.json",
                 "./sprites/FireBall.json",
+                "./sprites/Bill.json",
             ]
         )
 

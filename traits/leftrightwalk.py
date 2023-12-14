@@ -13,7 +13,11 @@ class LeftRightWalkTrait:
 
     def update(self):
         if self.entity.vel.x == 0:
-            self.direction *= -1
+            if self.entity.__class__.__name__ == "BulletBill":
+                # do nothing
+                pass
+            else:
+                self.direction *= -1
         self.entity.vel.x = self.speed * self.direction
         self.moveEntity()
 
@@ -21,4 +25,5 @@ class LeftRightWalkTrait:
         self.entity.rect.y += self.entity.vel.y
         self.collDetection.checkY()
         self.entity.rect.x += self.entity.vel.x
-        self.collDetection.checkX()
+        if self.entity.__class__.__name__ != "BulletBill":
+            self.collDetection.checkX()
