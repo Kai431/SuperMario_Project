@@ -42,7 +42,6 @@ fireAnimation = Animation(
     ],
     spriteCollection["mario_fire_idle"].image,
     spriteCollection["mario_fire_jump"].image,
-
 )
 
 
@@ -64,6 +63,7 @@ class Mario(EntityBase):
             "throwFire": throwFire(self),
         }
 
+        self.dir = 1
         self.levelObj = level
         self.collision = Collider(self, level)
         self.screen = screen
@@ -175,8 +175,12 @@ class Mario(EntityBase):
             ent.timer = 0
             ent.leftrightTrait.speed = 1
             ent.alive = True
+            if ent.bouncing:
+                ent.bouncing = False
+            elif not ent.active:
+                ent.leftrightTrait.direction = self.dir
+                ent.bouncing = True
             ent.active = False
-            ent.bouncing = False
         if ent.__class__.__name__ == "RedMushroom":
             self.dashboard.points += 100
         elif ent.__class__.__name__ == "FireFlower":

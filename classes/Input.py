@@ -20,9 +20,11 @@ class Input:
         pressedKeys = pygame.key.get_pressed()
 
         if pressedKeys[K_LEFT] or pressedKeys[K_h] and not pressedKeys[K_RIGHT]:
-            self.entity.traits["goTrait"].direction = -1
+            self.entity.dir = -1
+            self.entity.traits["goTrait"].direction = self.entity.dir
         elif pressedKeys[K_RIGHT] or pressedKeys[K_l] and not pressedKeys[K_LEFT]:
-            self.entity.traits["goTrait"].direction = 1
+            self.entity.dir = 1
+            self.entity.traits["goTrait"].direction = self.entity.dir
         else:
             self.entity.traits["goTrait"].direction = 0
 
@@ -45,9 +47,9 @@ class Input:
             self.entity.levelObj.addGoomba(
                 mouseY / 32, mouseX / 32 - self.entity.camera.pos.x
             )
-            #self.entity.levelObj.addRedMushroom(
+            # self.entity.levelObj.addRedMushroom(
             #    mouseY / 32, mouseX / 32 - self.entity.camera.pos.x
-            #)
+            # )
         if self.isLeftMouseButtonPressed(events):
             self.entity.levelObj.addFireFlower(
                 mouseY / 32, mouseX / 32 - self.entity.camera.pos.x
