@@ -23,6 +23,28 @@
             ],
             "deltaTime": 10,
             "colorKey": -1
+        },
+        {
+            "name": "explosion_big",
+            "images": [
+                {
+                    "x": 16,
+                    "y": 9,
+                    "scale": 2
+                },
+                {
+                    "x": 16,
+                    "y": 10,
+                    "scale": 2
+                },
+                {
+                    "x": 16,
+                    "y": 11,
+                    "scale": 2
+                }
+            ],
+            "deltaTime": 10,
+            "colorKey": -1
         }
     ]
 }

@@ -93,4 +93,3 @@ class FireBall(EntityBase):
                 elif clName == "Goomba" or clName == "BulletBill":
                     ent.alive = False
                     self.alive = False
-        pass
