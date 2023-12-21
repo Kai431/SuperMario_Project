@@ -1,11 +1,11 @@
 from classes.Animation import Animation
-from classes.Maths import Vec2D
 from entities.EntityBase import EntityBase
 from traits.leftrightwalk import LeftRightWalkTrait
 from classes.Collider import Collider
 from classes.EntityCollider import EntityCollider
 from classes.Sprites import Sprites
 from traits.bounce import bounceTrait
+from copy import copy
 
 spriteCollection = Sprites().spriteCollection
 throwAnimation = Animation(
@@ -16,6 +16,7 @@ throwAnimation = Animation(
         spriteCollection["fireBall_4"].image,
     ],
 )
+
 # TODO: Add Animaiton exploding
 
 
@@ -49,23 +50,36 @@ class FireBall(EntityBase):
                 self.bounceTrait.jump = 1
                 self.lives -= 1
             if self.lives <= 0:
-                self.alive = 0
+                self.alive = False
             if self.direction != self.leftrightTrait.direction:
                 self.lives -= 1
             self.direction = self.leftrightTrait.direction
             self.bounceTrait.update()
             self.checkEntityCollision(camera)
         else:
-            self.alive = None
+            self.onDead(camera)
 
     def drawFireBall(self, camera):
         self.screen.blit(self.animation.image, (self.rect.x + camera.x, self.rect.y))
         self.animation.update()
 
+    def onDead(self, camera):
+        if self.timer == 0:
+            self.animation = copy(self.spriteCollection.get("explosion").animation)
+        if self.timer < self.timeAfterDeath - 2:
+            self.screen.blit(
+                self.animation.image,
+                (self.rect.x + camera.x, self.rect.y),
+            )
+            self.animation.update()
+        else:
+            self.alive = None
+        self.timer += 0.1
+
     def checkEntityCollision(self, camera):
         for ent in self.levelObj.entityList:
             collisionState = self.EntityCollider.check(ent)
-            if collisionState.isColliding:
+            if collisionState.isColliding and ent.alive:
                 clName = ent.__class__.__name__
                 if clName == "Koopa":
                     if not ent.active:
@@ -75,7 +89,7 @@ class FireBall(EntityBase):
                         ent.leftrightTrait.speed = 1
                         ent.alive = True
                         ent.active = False
-                    self.alive = None
+                    self.alive = False
                 elif clName == "Goomba" or clName == "BulletBill":
                     ent.alive = False
                     self.alive = False

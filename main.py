@@ -9,11 +9,9 @@ from entities.Mario import Mario
 windowSize = 640, 480
 
 # TODO: Add Finish
-# TODO: Add Koopa Shoot on top Bounce
 # TODO: Add LevelEditor
 # TODO: Add ducking (maybe)
 # TODO: Add Bullet Bill Shooting Sound, Animation, Points
-# TODO: FireFlower Animations
 
 
 def main():

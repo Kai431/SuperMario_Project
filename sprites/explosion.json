@@ -1,0 +1,28 @@
+{
+    "spriteSheetURL": "./img/Items.png",
+    "type": "animation",
+    "sprites": [
+        {
+            "name": "explosion",
+            "images": [
+                {
+                    "x": 16,
+                    "y": 9,
+                    "scale": 1
+                },
+                {
+                    "x": 16,
+                    "y": 10,
+                    "scale": 1
+                },
+                {
+                    "x": 16,
+                    "y": 11,
+                    "scale": 1
+                }
+            ],
+            "deltaTime": 10,
+            "colorKey": -1
+        }
+    ]
+}

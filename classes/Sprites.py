@@ -19,6 +19,7 @@ class Sprites:
                 "./sprites/FireFlower.json",
                 "./sprites/FireBall.json",
                 "./sprites/Bill.json",
+                "./sprites/explosion.json",
             ]
         )
 
