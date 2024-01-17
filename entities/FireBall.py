@@ -60,12 +60,14 @@ class FireBall(EntityBase):
             self.onDead(camera)
 
     def drawFireBall(self, camera):
-        self.screen.blit(self.animation.image, (self.rect.x + camera.x, self.rect.y))
+        self.screen.blit(self.animation.image,
+                         (self.rect.x + camera.x, self.rect.y))
         self.animation.update()
 
     def onDead(self, camera):
         if self.timer == 0:
-            self.animation = copy(self.spriteCollection.get("explosion").animation)
+            self.animation = copy(
+                self.spriteCollection.get("explosion").animation)
         if self.timer < self.timeAfterDeath - 2:
             self.screen.blit(
                 self.animation.image,

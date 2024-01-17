@@ -11,8 +11,6 @@ windowSize = 640, 480
 # TODO: Add Finish
 # TODO: Add LevelEditor
 # TODO: Add ducking (maybe)
-# TODO: Add Bullet Bill Shooting Sound
-# TODO: Add Fire Shooting Sound
 
 
 def main():

@@ -21,6 +21,8 @@ class Sound:
         self.powerup = mixer.Sound('./sfx/powerup.ogg')
         self.powerup_appear = mixer.Sound('./sfx/powerup_appears.ogg')
         self.pipe = mixer.Sound('./sfx/pipe.ogg')
+        self.fire = mixer.Sound('./sfx/throwFire.ogg')
+        self.billBlast = mixer.Sound('./sfx/BillBlaster.ogg')
 
     def play_sfx(self, sfx):
         if self.allowSFX:

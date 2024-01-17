@@ -36,11 +36,15 @@ class Level:
 
     def loadEntities(self, data):
         try:
-            [self.addCoinBox(x, y) for x, y in data["level"]["entities"]["CoinBox"]]
-            [self.addGoomba(x, y) for x, y in data["level"]["entities"]["Goomba"]]
-            [self.addKoopa(x, y) for x, y in data["level"]["entities"]["Koopa"]]
+            [self.addCoinBox(x, y)
+             for x, y in data["level"]["entities"]["CoinBox"]]
+            [self.addGoomba(x, y)
+             for x, y in data["level"]["entities"]["Goomba"]]
+            [self.addKoopa(x, y)
+             for x, y in data["level"]["entities"]["Koopa"]]
             [self.addCoin(x, y) for x, y in data["level"]["entities"]["coin"]]
-            [self.addCoinBrick(x, y) for x, y in data["level"]["entities"]["coinBrick"]]
+            [self.addCoinBrick(x, y)
+             for x, y in data["level"]["entities"]["coinBrick"]]
             [
                 self.addRandomBox(x, y, item)
                 for x, y, item in data["level"]["entities"]["RandomBox"]
@@ -81,7 +85,8 @@ class Level:
         for x, y, z in data["level"]["objects"]["pipe"]:
             self.addPipeSprite(x, y, z)
         for x, y in data["level"]["objects"]["sky"]:
-            self.level[y][x] = Tile(self.sprites.spriteCollection.get("sky"), None)
+            self.level[y][x] = Tile(
+                self.sprites.spriteCollection.get("sky"), None)
         for x, y in data["level"]["objects"]["ground"]:
             self.level[y][x] = Tile(
                 self.sprites.spriteCollection.get("ground"),
@@ -150,7 +155,8 @@ class Level:
 
     def addBushSprite(self, x, y):
         try:
-            self.level[y][x] = Tile(self.sprites.spriteCollection.get("bush_1"), None)
+            self.level[y][x] = Tile(
+                self.sprites.spriteCollection.get("bush_1"), None)
             self.level[y][x + 1] = Tile(
                 self.sprites.spriteCollection.get("bush_2"), None
             )
@@ -189,7 +195,8 @@ class Level:
         )
 
     def addCoin(self, x, y):
-        self.entityList.append(Coin(self.screen, self.sprites.spriteCollection, x, y))
+        self.entityList.append(
+            Coin(self.screen, self.sprites.spriteCollection, x, y))
 
     def addCoinBrick(self, x, y):
         self.level[y][x] = Tile(None, pygame.Rect(x * 32, y * 32 - 1, 32, 32))
@@ -206,12 +213,14 @@ class Level:
 
     def addGoomba(self, x, y):
         self.entityList.append(
-            Goomba(self.screen, self.sprites.spriteCollection, x, y, self, self.sound)
+            Goomba(self.screen, self.sprites.spriteCollection,
+                   x, y, self, self.sound)
         )
 
     def addKoopa(self, x, y):
         self.entityList.append(
-            Koopa(self.screen, self.sprites.spriteCollection, x, y, self, self.sound)
+            Koopa(self.screen, self.sprites.spriteCollection,
+                  x, y, self, self.sound)
         )
 
     def addRedMushroom(self, x, y):
@@ -229,6 +238,7 @@ class Level:
         )
 
     def addFireBall(self, x, y, dir):
+        self.sound.play_sfx(self.sound.fire)
         self.entityList.append(
             FireBall(
                 self.screen, self.sprites.spriteCollection, x, y, self, self.sound, dir

@@ -26,10 +26,13 @@ class BillShooter(EntityBase):
         self.time += 1
         if self.time == self.maxTime:
             self.time = 0
+            self.sound.play_sfx(self.sound.billBlast)
             if self.direction == 1:
-                self.level.addBulletBill(self.y + 1, self.x + 1, self.direction)
+                self.level.addBulletBill(
+                    self.y + 1, self.x + 1, self.direction)
             else:
-                self.level.addBulletBill(self.y + 1, self.x - 1, self.direction)
+                self.level.addBulletBill(
+                    self.y + 1, self.x - 1, self.direction)
 
     def changeDir(self, cam):
         if cam.entity.getPosX() // 33 - cam.x // 32 <= self.x - 1:

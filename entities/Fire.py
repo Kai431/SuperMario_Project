@@ -34,7 +34,8 @@ class FireFlower(EntityBase):
             self.onDead(camera)
 
     def drawFireFlower(self, camera):
-        self.screen.blit(self.animation.image, (self.rect.x + camera.x, self.rect.y))
+        self.screen.blit(self.animation.image,
+                         (self.rect.x + camera.x, self.rect.y))
         self.animation.update()
 
     def onDead(self, camera):
@@ -51,7 +52,8 @@ class FireFlower(EntityBase):
 
     def movePointsTextUpAndDraw(self, camera):
         self.textPos.y += -0.5
-        self.dashboard.drawText("200", self.textPos.x + camera.x, self.textPos.y, 8)
+        self.dashboard.drawText(
+            "200", self.textPos.x + camera.x, self.textPos.y, 8)
 
     def checkEntityCollision(self):
         pass
