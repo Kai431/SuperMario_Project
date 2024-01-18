@@ -1,0 +1,51 @@
+### Jan 17, 2024 (3f8e6455)
+- Added Sound: Fireball, Bullet Bill
+
+### Dec 21, 2023 (190dc33a)
+- Added: Bullet Bill Points and Explosion animation
+
+### Dec 21, 2023 (678dbb46)
+- FireBall exploding Animation added
+- BugFix: FireBall colliding with dead enemies
+
+### Dec 14, 2023 (ccbadcdf)
+- BillShooter direction
+
+### Dec 14, 2023 (4ee5bd96)
+- Shoot Coopa on bouncing Top
+
+### Dec 14, 2023 (7b41065c)
+- Added Bullet Bill & Shooter
+
+### Dec 10, 2023 (6b73b977)
+- Creation of BillShooter
+
+### Dec 10, 2023 (6985a017)
+- BugFix DeathSound when SFX Disabled
+
+### Dec 09, 2023 (915cd52e)
+- TODOs
+
+### Dec 09, 2023 (d229a1e8)
+- Added Points to Koopa
+
+### Dec 09, 2023 (49e5e86e)
+- BugFix Goomba Points
+
+### Dec 09, 2023 (f25dddb2)
+- BugFix Koopa delete 2
+
+### Dec 09, 2023 (7405b80b)
+- BugFix Koopa delete
+
+### Dec 09, 2023 (6b623f32)
+- FireFlower Complete
+
+### Dec 08, 2023 (f86aac86)
+- useless
+
+### Dec 08, 2023 (bf8529af)
+- FirteBall
+
+### Dec 08, 2023 (90ac0f8e)
+- Initial commit
