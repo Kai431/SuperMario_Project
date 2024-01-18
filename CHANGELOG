@@ -1,51 +1,62 @@
 ### Jan 17, 2024 (3f8e6455)
-- Added Sound: Fireball, Bullet Bill
 
-### Dec 21, 2023 (190dc33a)
-- Added: Bullet Bill Points and Explosion animation
+#### Added
 
-### Dec 21, 2023 (678dbb46)
-- FireBall exploding Animation added
-- BugFix: FireBall colliding with dead enemies
+- Sound when shooting Fireball
+- Sound when Bullet Bill gets shot
 
-### Dec 14, 2023 (ccbadcdf)
-- BillShooter direction
+### Dec 21, 2023
 
-### Dec 14, 2023 (4ee5bd96)
-- Shoot Coopa on bouncing Top
+#### Added
 
-### Dec 14, 2023 (7b41065c)
-- Added Bullet Bill & Shooter
+- FireBall exploding Animation (678dbb46)
+- Bullet Bill Points and exploding animation (190dc33a)
 
-### Dec 10, 2023 (6b73b977)
-- Creation of BillShooter
+#### Fixed
 
-### Dec 10, 2023 (6985a017)
-- BugFix DeathSound when SFX Disabled
+- FireBall colliding with dead enemies (678dbb46)
 
-### Dec 09, 2023 (915cd52e)
-- TODOs
+### Dec 14, 2023
 
-### Dec 09, 2023 (d229a1e8)
-- Added Points to Koopa
+#### Added
 
-### Dec 09, 2023 (49e5e86e)
-- BugFix Goomba Points
+- Bill direction depending on Mario position (ccbadcdf)
 
-### Dec 09, 2023 (f25dddb2)
-- BugFix Koopa delete 2
+- Shoot Coopa when bouncing on top (4ee5bd96)
 
-### Dec 09, 2023 (7405b80b)
-- BugFix Koopa delete
+- Bullet Bill & Shooter fully functional (7b41065c)
 
-### Dec 09, 2023 (6b623f32)
-- FireFlower Complete
+### Dec 10, 2023
 
-### Dec 08, 2023 (f86aac86)
-- useless
+#### Added
 
-### Dec 08, 2023 (bf8529af)
-- FirteBall
+- Added Billshooter Class and Block in Level (6b73b977)
+
+#### Fixed
+
+- Death Sound was played even when SFX Disabled (6985a017)
+
+### Dec 09, 2023
+
+#### Added
+
+- Added Points for killing Koopa (d229a1e8)
+
+#### Fixed
+
+- Goomba Points not Added if killed with Fireball (49e5e86e)
+
+- Koopa not fully deleted after Death (7405b80b, f25dddb2)
+
+### Dec 08 & 09, 2023 (bf8529af, 6b623f32)
+
+#### Added
+
+- FireFlower Item
+- Fire Mario Skin
+- Fireball Sprite
+- Throwing Trade
+- Throwing Fireball
 
 ### Dec 08, 2023 (90ac0f8e)
 - Initial commit
